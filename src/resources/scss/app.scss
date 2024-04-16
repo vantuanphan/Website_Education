@@ -17,16 +17,19 @@
     display: flex;
 }
 
-.title-trash a { 
-    text-decoration: none;
-}
-
-.text-center a {
-    text-decoration: none;
-
-}
-
 .checkbox-select-all-options {
     width: 130px;
     margin: 0 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.restored-or-delete a {
+    text-decoration: none;
+}
+
+.update-or-delete a {
+    text-decoration: none;
 }
