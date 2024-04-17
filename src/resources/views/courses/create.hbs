@@ -14,10 +14,9 @@
 
         {{!-- <div class="mb-3">
             <label for="photo" class="form-label">Photo</label>
-            <input type="file" class="form-control" id="photo" name="photo">
+            <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
         </div> --}}
     
-        
         <div class="mb-3">
             <label for="videoId" class="form-label">Video ID</label>
             <input type="text" class="form-control" id="videoId" name="videoId">
@@ -30,5 +29,35 @@
 
         <button type="submit" class="btn btn-primary">Thêm khóa học</button>
     </form>
-
+    <div id="imagePreview" class="mt-4"></div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const photoInput = document.getElementById('photo');
+        const imagePreview = document.getElementById('imagePreview');
+
+        photoInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.classList.add('img-thumbnail');
+                    imagePreview.innerHTML = '';
+                    imagePreview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        const courseForm = document.getElementById('courseForm');
+        courseForm.addEventListener('submit', function(event) {
+            // Bạn có thể thêm mã xử lý tại đây để gửi dữ liệu form lên máy chủ
+            // và xử lý việc lưu ảnh nếu cần
+            // Nếu không, chỉ cần đảm bảo form gửi đến URL đúng.
+        });
+    });
+</script>
+
